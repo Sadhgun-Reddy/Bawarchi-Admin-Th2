@@ -1,42 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { LoginPage } from './pages/auth/LoginPage';
-import { ThemeShowcase } from './components/ui/ThemeShowcase';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { AppRoutes } from './routes';
 
-function App() {
-    const [theme, setTheme] = useState<'stripe-light' | 'slate-dark'>('stripe-light');
-    const [view, setView] = useState<'login' | 'showcase'>('login');
-
-    useEffect(() => {
-        if (theme === 'slate-dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme((prev) => (prev === 'stripe-light' ? 'slate-dark' : 'stripe-light'));
-    };
+function FloatingThemeTools() {
+    const { theme, toggleTheme } = useTheme();
 
     return (
-        <div className="min-h-screen bg-background text-text-primary font-sans transition-colors duration-normal">
-            <div className="fixed top-4 right-4 z-50 flex gap-2">
-                <button
-                    onClick={() => setView(view === 'login' ? 'showcase' : 'login')}
-                    className="bg-surface border border-border px-4 py-2 rounded-full shadow-elevation-2 hover:bg-surface-secondary transition-all text-sm font-medium"
-                >
-                    {view === 'login' ? 'See Style Showcase' : 'View Login Flow'}
-                </button>
-                <button
-                    onClick={toggleTheme}
-                    className="bg-surface border border-border px-4 py-2 rounded-full shadow-elevation-2 hover:bg-surface-secondary transition-all text-sm font-medium"
-                >
-                    {theme === 'stripe-light' ? '🌙 Switch to Slate Dark' : '☀️ Switch to Stripe Light'}
-                </button>
-            </div>
-
-            {view === 'login' ? <LoginPage /> : <ThemeShowcase />}
+        <div className="fixed bottom-4 right-4 z-[100] flex gap-2">
+            <button
+                onClick={toggleTheme}
+                className="bg-surface border border-border px-4 py-2 rounded-full shadow-elevation-2 hover:bg-surface-secondary transition-all text-sm font-medium text-text-primary"
+            >
+                {theme === 'stripe-light' ? '🌙 Slate Dark' : '☀️ Stripe Light'}
+            </button>
         </div>
+    );
+}
+
+function AppContent() {
+    return (
+        <BrowserRouter>
+            {/* Floating Tools globally visible */}
+            <FloatingThemeTools />
+
+            {/* Route Execution Matrix */}
+            <AppRoutes />
+        </BrowserRouter>
+    );
+}
+
+function App() {
+    return (
+        <ThemeProvider>
+            <AppContent />
+        </ThemeProvider>
     );
 }
 
