@@ -9,6 +9,11 @@ import { ReportsExportsPage } from '../pages/reports/ReportsExportsPage';
 import { UsersPage } from '../pages/users/UsersPage';
 import { UserDetailPage } from '../pages/users/UserDetailPage';
 import { CatererManagementPage } from '../pages/caterers/CatererManagement';
+import { CatererApprovalsPage } from '../pages/caterers/CatererApprovalsPage';
+import { CatererReviewPage } from '../pages/caterers/CatererReviewPage';
+import { CatererComplaintsPage } from '../pages/caterers/CatererComplaintsPage';
+import { MenuModerationPage } from '../pages/menus/MenuModerationPage';
+import { OffersModerationPage } from '../pages/offers/OffersModerationPage';
 
 export function AppRoutes() {
     return (
@@ -28,6 +33,11 @@ export function AppRoutes() {
                 <Route path="users" element={<UsersPage />} />
                 <Route path="users/:id" element={<UserDetailPage />} />
                 <Route path="caterers" element={<CatererManagementPage />} />
+                <Route path="caterers/approvals" element={<CatererApprovalsPage />} />
+                <Route path="caterers/review/:id" element={<CatererReviewPage />} />
+                <Route path="caterers/complaints" element={<CatererComplaintsPage />} />
+                <Route path="menus/moderation" element={<MenuModerationPage />} />
+                <Route path="offers/moderation" element={<OffersModerationPage />} />
                 <Route path="showcase" element={<ThemeShowcase />} />
             </Route>
 
