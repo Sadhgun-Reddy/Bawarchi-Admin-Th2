@@ -14,6 +14,8 @@ import { CatererReviewPage } from '../pages/caterers/CatererReviewPage';
 import { CatererComplaintsPage } from '../pages/caterers/CatererComplaintsPage';
 import { MenuModerationPage } from '../pages/menus/MenuModerationPage';
 import { OffersModerationPage } from '../pages/offers/OffersModerationPage';
+import BlogModerationPage from '../pages/blog/BlogModerationPage';
+import BlogReviewPage from '../pages/blog/BlogReviewPage';
 
 export function AppRoutes() {
     return (
@@ -38,6 +40,8 @@ export function AppRoutes() {
                 <Route path="caterers/complaints" element={<CatererComplaintsPage />} />
                 <Route path="menus/moderation" element={<MenuModerationPage />} />
                 <Route path="offers/moderation" element={<OffersModerationPage />} />
+                <Route path="blog/moderation" element={<BlogModerationPage />} />
+                <Route path="blog/review/:id" element={<BlogReviewPage />} />
                 <Route path="showcase" element={<ThemeShowcase />} />
             </Route>
 

@@ -1,5 +1,29 @@
 import { NavGroup } from '../types/navigation';
 
+/**
+ * Navigation Configuration
+ * 
+ * Updated to match all implemented pages in the application.
+ * 
+ * IMPLEMENTED PAGES INCLUDED:
+ * - Dashboard Overview (/admin/dashboard)
+ * - Reports (/admin/reports) 
+ * - Audit Logs (/admin/audit-logs)
+ * - Users (/admin/users)
+ * - Caterers (/admin/caterers)
+ * - Caterer Approvals (/admin/caterers/approvals) - ADDED
+ * - Caterer Complaints (/admin/caterers/complaints) - ADDED
+ * - Menu Moderation (/admin/menus/moderation) - ADDED
+ * - Offers Moderation (/admin/offers/moderation) - ADDED
+ * 
+ * REMOVED ITEMS (no corresponding pages exist yet):
+ * - Inventory (/admin/inventory)
+ * - Reviews (/admin/reviews)
+ * - Reported Items (/admin/reported)
+ * - System Health (/admin/health)
+ * - Food Rescue (/admin/rescue)
+ * - Settings (/admin/settings)
+ */
 export const navigationConfig: NavGroup[] = [
     {
         title: "Operations",
@@ -10,26 +34,24 @@ export const navigationConfig: NavGroup[] = [
         ]
     },
     {
-        title: "Management",
+        title: "User Management",
         items: [
-            { label: "User Roles", icon: "Users", path: "/admin/users" },
+            { label: "Users", icon: "Users", path: "/admin/users" },
+        ]
+    },
+    {
+        title: "Caterer Management",
+        items: [
             { label: "Caterers", icon: "ChefHat", path: "/admin/caterers" },
-            { label: "Inventory", icon: "Package", path: "/admin/inventory" },
+            { label: "Approvals", icon: "CheckCircle", path: "/admin/caterers/approvals" },
+            { label: "Complaints", icon: "AlertTriangle", path: "/admin/caterers/complaints" },
         ]
     },
     {
-        title: "Content",
+        title: "Content Moderation",
         items: [
-            { label: "Reviews", icon: "Star", path: "/admin/reviews" },
-            { label: "Reported Items", icon: "AlertTriangle", path: "/admin/reported" },
-        ]
-    },
-    {
-        title: "System",
-        items: [
-            { label: "System Health", icon: "Activity", path: "/admin/health" },
-            { label: "Food Rescue", icon: "Heart", path: "/admin/rescue" },
-            { label: "Settings", icon: "Settings", path: "/admin/settings" },
+            { label: "Menu Moderation", icon: "BookOpen", path: "/admin/menus/moderation" },
+            { label: "Offers Moderation", icon: "Tags", path: "/admin/offers/moderation" },
         ]
     }
 ];
