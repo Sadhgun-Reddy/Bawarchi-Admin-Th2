@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ChevronRight, ArrowUpDown } from 'lucide-react';
 import { AuditLog } from '../../types/audit';
 import { cn } from '../../lib/utils';
@@ -9,7 +9,7 @@ interface AuditTableProps {
 }
 
 export function AuditTable({ data }: AuditTableProps) {
-    const { theme } = useTheme();
+    const {} = useTheme();
 
     return (
         <div className="w-full bg-surface dark:bg-[#1E293B] border border-border rounded-[8px] overflow-hidden shadow-elevation-1 dark:shadow-none transition-all duration-normal ease-smooth dark:matte-surface">

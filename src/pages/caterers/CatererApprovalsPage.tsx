@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ApprovalsLayout } from '../../components/caterers/approvals/ApprovalsLayout';
 
 export function CatererApprovalsPage() {

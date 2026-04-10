@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ModerationLayout } from '../../components/menus/moderation/ModerationLayout';
 
 export function MenuModerationPage() {

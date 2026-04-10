@@ -13,7 +13,6 @@ export default function ModerationStatsGrid({ stats }: ModerationStatsGridProps)
       {stats.map((stat, index) => {
         const IconComponent = iconMap[stat.icon as keyof typeof iconMap];
         const isPositiveTrend = stat.trend?.startsWith('-') && index === 0; // Negative time is good
-        const isNegativeTrend = stat.trend?.startsWith('+') && index === 1; // More pending is concerning
         const isGoodTrend = stat.trend?.startsWith('+') && index === 2; // Higher approval is good
         
         return (

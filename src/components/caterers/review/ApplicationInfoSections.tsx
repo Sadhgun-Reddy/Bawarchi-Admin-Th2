@@ -5,7 +5,7 @@ import { CatererApplicationDetail, AppDocument } from '../../../types/catererRev
 
 // Main wrapper for all sections
 export const ApplicationInfoSections: React.FC<{ application: CatererApplicationDetail }> = ({ application }) => {
-    const containerVariants = {
+    const containerVariants: any = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -13,7 +13,7 @@ export const ApplicationInfoSections: React.FC<{ application: CatererApplication
         }
     };
 
-    const itemVariants = {
+    const itemVariants: any = {
         hidden: { opacity: 0, y: 15 },
         show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } }
     };

@@ -4,7 +4,7 @@ import { cn } from '../../lib/utils';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export function TablePagination({ totalRows }: { totalRows: number }) {
-    const { theme } = useTheme();
+    const {} = useTheme();
 
     return (
         <div className="flex flex-col sm:flex-row items-center justify-between px-2 sm:px-0 py-4 gap-4 w-full">

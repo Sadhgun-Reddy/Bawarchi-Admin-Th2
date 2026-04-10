@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { AuditHeader, AuditFilters } from '../../components/audit/AuditLayoutElements';
 import { AuditTable } from '../../components/audit/AuditTable';
 import { mockAuditLogs } from '../../components/audit/mockData';

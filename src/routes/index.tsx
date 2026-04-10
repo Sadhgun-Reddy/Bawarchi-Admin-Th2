@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage } from '../pages/auth/LoginPage';
 import { ThemeShowcase } from '../components/ui/ThemeShowcase';
@@ -16,6 +16,11 @@ import { MenuModerationPage } from '../pages/menus/MenuModerationPage';
 import { OffersModerationPage } from '../pages/offers/OffersModerationPage';
 import BlogModerationPage from '../pages/blog/BlogModerationPage';
 import BlogReviewPage from '../pages/blog/BlogReviewPage';
+import { EnquiriesPage } from '../pages/enquiries/EnquiriesPage';
+import { SupportTicketsPage } from '../pages/support/SupportTicketsPage';
+import { TicketDetailPage } from '../pages/support/TicketDetailPage';
+import { FoodRescuePage } from '../pages/food-rescue/FoodRescuePage';
+import { DonationReviewPage } from '../pages/food-rescue/DonationReviewPage';
 
 export function AppRoutes() {
     return (
@@ -42,6 +47,14 @@ export function AppRoutes() {
                 <Route path="offers/moderation" element={<OffersModerationPage />} />
                 <Route path="blog/moderation" element={<BlogModerationPage />} />
                 <Route path="blog/review/:id" element={<BlogReviewPage />} />
+
+                {/* New Routes */}
+                <Route path="enquiries" element={<EnquiriesPage />} />
+                <Route path="support" element={<SupportTicketsPage />} />
+                <Route path="support/:id" element={<TicketDetailPage />} />
+                <Route path="rescue" element={<FoodRescuePage />} />
+                <Route path="rescue/review/:id" element={<DonationReviewPage />} />
+
                 <Route path="showcase" element={<ThemeShowcase />} />
             </Route>
 

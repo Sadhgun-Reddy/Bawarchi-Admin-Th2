@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ReportsHeader } from '../../components/reports/ReportsHeader';
 import { ReportGenerator } from '../../components/reports/ReportGenerator';
 import { StatsGrid } from '../../components/reports/StatsGrid';

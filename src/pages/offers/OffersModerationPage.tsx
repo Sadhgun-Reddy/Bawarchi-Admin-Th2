@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { OffersModerationLayout } from '../../components/offers/moderation/OffersModerationLayout';
 
 export function OffersModerationPage() {

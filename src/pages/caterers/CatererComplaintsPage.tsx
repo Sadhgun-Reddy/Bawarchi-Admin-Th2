@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ComplaintsPageLayout } from '../../components/caterers/complaints/ComplaintsPageLayout';
 
 export function CatererComplaintsPage() {
