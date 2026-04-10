@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { AppRoutes } from './routes';

@@ -37,6 +37,8 @@ export const navigationConfig: NavGroup[] = [
         title: "User Management",
         items: [
             { label: "Users", icon: "Users", path: "/admin/users" },
+            { label: "Enquiries", icon: "Inbox", path: "/admin/enquiries" },
+            { label: "Support", icon: "LifeBuoy", path: "/admin/support" },
         ]
     },
     {
@@ -52,6 +54,12 @@ export const navigationConfig: NavGroup[] = [
         items: [
             { label: "Menu Moderation", icon: "BookOpen", path: "/admin/menus/moderation" },
             { label: "Offers Moderation", icon: "Tags", path: "/admin/offers/moderation" },
+        ]
+    },
+    {
+        title: "Logistics & Outreach",
+        items: [
+            { label: "Food Rescue", icon: "HeartHandshake", path: "/admin/rescue" },
         ]
     }
 ];

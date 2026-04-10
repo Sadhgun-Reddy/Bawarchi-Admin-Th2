@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { ReviewPageLayout } from '../../components/caterers/review/ReviewPageLayout';
 
 export function CatererReviewPage() {

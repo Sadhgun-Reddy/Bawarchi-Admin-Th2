@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Search } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 

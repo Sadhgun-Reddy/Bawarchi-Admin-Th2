@@ -1,9 +1,9 @@
-import React from 'react';
+
 import { Search, Bell } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 export function ReportsHeader() {
-    const { theme } = useTheme();
+    const {} = useTheme();
 
     return (
         <div className="sticky top-0 z-20 flex flex-col md:flex-row justify-between items-start md:items-center bg-background/80 backdrop-blur-md dark:bg-[#0F172A]/80 pb-4 pt-4 border-b border-border gap-4">

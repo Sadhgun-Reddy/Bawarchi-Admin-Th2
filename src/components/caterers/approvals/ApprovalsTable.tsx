@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ApprovalsTableProps, CatererApplication } from '../../../types/catererApprovals.types';
+import { ApprovalsTableProps } from '../../../types/catererApprovals.types';
 import { TableFooter } from './TableFooter';
 
 export const ApprovalsTable: React.FC<ApprovalsTableProps> = ({ applications }) => {

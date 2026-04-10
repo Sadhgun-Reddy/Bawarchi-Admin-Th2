@@ -1,4 +1,4 @@
-import React from 'react';
+
 import * as Icons from 'lucide-react';
 import { ReportStats } from '../../types/reports';
 import { cn } from '../../lib/utils';

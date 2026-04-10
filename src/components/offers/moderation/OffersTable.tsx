@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight, Eye, PercentSquare, CakeSlice, Briefcase } from 'lucide-react';
-import { CatererOffer, OffersTableProps } from '../../../types/offersModeration.types';
+import { OffersTableProps } from '../../../types/offersModeration.types';
 
 export const OffersTable: React.FC<OffersTableProps> = ({ offers, isLoading }) => {
 

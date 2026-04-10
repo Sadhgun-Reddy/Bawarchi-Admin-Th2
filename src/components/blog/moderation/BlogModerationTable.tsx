@@ -10,7 +10,7 @@ const categoryColors: Record<string, string> = {
   'Seasonal': 'bg-teal-100 text-teal-700 dark:bg-teal-500/15 dark:text-teal-400',
 };
 
-export default function BlogModerationTable({ posts, loading, activeTab }: BlogModerationTableProps) {
+export default function BlogModerationTable({ posts, loading }: BlogModerationTableProps) {
   const navigate = useNavigate();
 
   const handleReviewPost = (postId: string) => {
