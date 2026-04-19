@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import BlogReviewLayout from '../../components/blog/review/BlogReviewLayout';
 import { mockBlogPostDetail } from '../../components/blog/review/mockData';
 
-export default function BlogReviewPage() {
+export function BlogReviewPage() {
   const navigate = useNavigate();
 
   const handleBack = () => {
