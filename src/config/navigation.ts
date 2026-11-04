@@ -61,5 +61,11 @@ export const navigationConfig: NavGroup[] = [
         items: [
             { label: "Food Rescue", icon: "HeartHandshake", path: "/admin/rescue" },
         ]
+    },
+    {
+        title: "System",
+        items: [
+            { label: "Settings", icon: "Settings", path: "/admin/settings" },
+        ]
     }
 ];

@@ -100,6 +100,12 @@ const MOCK_DONATIONS: Donation[] = [
 export function FoodRescuePage() {
     const [searchQuery, setSearchQuery] = useState('');
 
+    const filteredDonations = MOCK_DONATIONS.filter(donation =>
+        donation.donorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        donation.foodDescription.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        donation.id.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="flex-1 overflow-y-auto p-4 md:p-8 lg:px-12 lg:py-10 no-scrollbar">
             <div className="max-w-6xl mx-auto space-y-8">
@@ -162,7 +168,7 @@ export function FoodRescuePage() {
                         </div>
                     </div>
 
-                    <DonationsTable donations={MOCK_DONATIONS} />
+                    <DonationsTable donations={filteredDonations} />
                 </div>
 
             </div>

@@ -1,9 +1,11 @@
 
-import { Search } from 'lucide-react';
+import { Search, LogOut } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export function TopBar() {
     const { theme } = useTheme();
+    const { user, logout } = useAuth();
 
     return (
         <header className="flex items-center justify-between h-[var(--topbar-height)] px-4 shrink-0 transition-colors duration-normal ease-smooth
@@ -32,12 +34,19 @@ export function TopBar() {
                 {/* User Profile Stub (Right of TopBar - prominently in Dark mode, but keeping it responsive) */}
                 <div className={`flex items-center gap-3 ${theme === 'stripe-light' ? 'md:hidden' : 'flex'}`}>
                     <div className="text-right hidden sm:block">
-                        <p className="text-sm font-medium text-text-primary leading-none">Admin User</p>
+                        <p className="text-sm font-medium text-text-primary leading-none">{user?.name || 'Admin User'}</p>
                         <p className="text-xs text-text-tertiary mt-1">Super Admin</p>
                     </div>
                     <div className="w-8 h-8 rounded-full bg-accent-muted flex items-center justify-center text-accent font-semibold text-sm">
-                        AU
+                        {user?.name?.substring(0, 2).toUpperCase() || 'AU'}
                     </div>
+                    <button
+                        onClick={logout}
+                        className="p-1.5 ml-2 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary rounded transition-colors"
+                        title="Logout"
+                    >
+                        <LogOut size={16} />
+                    </button>
                 </div>
             </div>
         </header>
