@@ -91,12 +91,12 @@ export const TicketChat: React.FC = () => {
             <div className="p-4 bg-surface-secondary/30 border-t border-border">
                 <div className="relative bg-surface rounded-lg shadow-input border border-border focus-within:border-accent focus-within:ring-1 focus-within:ring-accent transition-all flex flex-col">
                     <div className="flex items-center gap-1 p-2 border-b border-border">
-                        <button className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Bold className="w-4 h-4" /></button>
-                        <button className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Italic className="w-4 h-4" /></button>
-                        <button className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><LinkIcon className="w-4 h-4" /></button>
+                        <button aria-label="Bold" title="Bold" className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Bold className="w-4 h-4" /></button>
+                        <button aria-label="Italic" title="Italic" className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Italic className="w-4 h-4" /></button>
+                        <button aria-label="Insert Link" title="Insert Link" className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><LinkIcon className="w-4 h-4" /></button>
                         <div className="h-4 w-px bg-border mx-1"></div>
-                        <button className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Paperclip className="w-4 h-4" /></button>
-                        <button className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><ImageIcon className="w-4 h-4" /></button>
+                        <button aria-label="Attach File" title="Attach File" className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><Paperclip className="w-4 h-4" /></button>
+                        <button aria-label="Insert Image" title="Insert Image" className="p-1.5 text-text-tertiary hover:text-text-secondary rounded hover:bg-surface-secondary"><ImageIcon className="w-4 h-4" /></button>
                     </div>
                     <textarea
                         className="w-full border-0 focus:ring-0 p-3 text-sm text-text-primary bg-transparent placeholder-text-tertiary resize-none rounded-b-lg"
