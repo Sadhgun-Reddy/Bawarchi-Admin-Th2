@@ -105,6 +105,12 @@ export function FoodRescuePage() {
     const [selectedDonation, setSelectedDonation] = useState<string | null>(null);
     const [selectedRequest, setSelectedRequest] = useState<string | null>(null);
 
+    const filteredDonations = MOCK_DONATIONS.filter(donation =>
+        donation.donorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        donation.foodDescription.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        donation.id.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className={`flex-1 overflow-y-auto no-scrollbar ${activeTab === 'matching' ? 'p-0 flex flex-col h-full bg-surface-secondary/50 relative' : 'p-4 md:p-8 lg:px-12 lg:py-10'}`}>
             {activeTab === 'pending' ? (
