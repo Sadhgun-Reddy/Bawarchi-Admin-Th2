@@ -43,7 +43,8 @@ export function LoginPage() {
             // Simulate API call
             setTimeout(() => {
                 setIsSubmitting(false);
-                console.log('Login Form Data: ', formData);
+                // 🛡️ SECURITY: Never log sensitive data like passwords to the console
+                console.log('Login attempt for email: ', formData.email);
             }, 1500);
         }
     };
