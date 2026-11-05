@@ -1,0 +1,4 @@
+## 2024-11-05 - [CRITICAL] Prevent Sensitive Data Logging in Frontend Forms
+**Vulnerability:** The authentication component (`LoginPage.tsx`) was logging the entire `formData` object to the browser console upon submission, including the plaintext password.
+**Learning:** Frontend logging must be carefully curated. When debugging forms, it's a common anti-pattern to log the entire state object. In a production environment, this exposes sensitive user credentials (passwords, tokens, PII) to anyone with access to the browser's developer tools or to malicious scripts that might intercept console output.
+**Prevention:** Never log raw form data objects directly. Specifically extract and log only non-sensitive identifiers (like the user's email) and avoid logging secrets. Enforce linting rules (like `no-console` or specific custom rules) if possible to prevent accidental console logging in production builds.
