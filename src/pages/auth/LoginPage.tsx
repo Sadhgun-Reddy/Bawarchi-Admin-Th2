@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, Loader2 } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 interface SaaSLoginForm {
     email: string;
@@ -17,6 +19,8 @@ export function LoginPage() {
     const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     const validate = () => {
         const newErrors: { email?: string; password?: string } = {};
@@ -40,12 +44,15 @@ export function LoginPage() {
         e.preventDefault();
         if (validate()) {
             setIsSubmitting(true);
-            // Simulate API call
-            setTimeout(() => {
+            try {
+                await login(formData.email);
+                navigate('/admin/dashboard', { replace: true });
+            } catch (err) {
+                console.error(err);
+                setErrors({ email: 'Login failed. Try again.' });
+            } finally {
                 setIsSubmitting(false);
-                // 🛡️ SECURITY: Never log sensitive data like passwords to the console
-                console.log('Login attempt for email: ', formData.email);
-            }, 1500);
+            }
         }
     };
 

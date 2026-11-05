@@ -1,7 +1,7 @@
 import ModerationLayout from '../../components/blog/moderation/ModerationLayout';
 import { mockBlogPosts, mockModerationStats } from '../../components/blog/moderation/mockData';
 
-export default function BlogModerationPage() {
+export function BlogModerationPage() {
   return (
     <ModerationLayout
       posts={mockBlogPosts}

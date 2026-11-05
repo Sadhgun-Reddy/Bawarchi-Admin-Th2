@@ -46,6 +46,12 @@ const MOCK_ENQUIRIES: Enquiry[] = [
 export function EnquiriesPage() {
     const [searchQuery, setSearchQuery] = useState('');
 
+    const filteredEnquiries = MOCK_ENQUIRIES.filter(enquiry =>
+        enquiry.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        enquiry.customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        enquiry.targetCaterer.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="flex-1 overflow-y-auto p-6 md:p-10 no-scrollbar">
             <div className="max-w-[1200px] mx-auto flex flex-col gap-8">
@@ -104,7 +110,7 @@ export function EnquiriesPage() {
                 </div>
 
                 {/* Main Data Table */}
-                <EnquiriesTable enquiries={MOCK_ENQUIRIES} />
+                <EnquiriesTable enquiries={filteredEnquiries} />
             </div>
         </div>
     );

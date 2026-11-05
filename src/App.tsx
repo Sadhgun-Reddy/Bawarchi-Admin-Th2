@@ -1,6 +1,7 @@
 
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { AppRoutes } from './routes';
 
 function FloatingThemeTools() {
@@ -33,7 +34,9 @@ function AppContent() {
 function App() {
     return (
         <ThemeProvider>
-            <AppContent />
+            <AuthProvider>
+                <AppContent />
+            </AuthProvider>
         </ThemeProvider>
     );
 }

@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { navigationConfig } from '../../config/navigation';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 export function Sidebar() {
     const { theme } = useTheme();
+    const { user, logout } = useAuth();
     const iconStrokeWidth = theme === 'slate-dark' ? 1.5 : 2;
 
     return (
@@ -66,16 +68,23 @@ export function Sidebar() {
             </nav>
 
             {/* User Profile Stub (Bottom of Sidebar - prominently in Light mode) */}
-            <div className={`p-4 border-t border-border shrink-0 ${theme === 'slate-dark' ? 'md:hidden' : 'block'}`}>
-                <div className="flex items-center gap-3 hover:bg-surface-secondary p-2 rounded-md transition-colors cursor-pointer">
+            <div className={`p-4 border-t border-border shrink-0 flex items-center justify-between ${theme === 'slate-dark' ? 'md:hidden' : 'block'}`}>
+                <div className="flex items-center gap-3 hover:bg-surface-secondary p-2 rounded-md transition-colors cursor-pointer flex-1 overflow-hidden">
                     <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-medium text-sm">
-                        A
+                        {user?.name?.[0] || 'A'}
                     </div>
                     <div className="flex-1 overflow-hidden">
-                        <p className="text-sm font-medium text-text-primary leading-tight truncate">Admin User</p>
-                        <p className="text-xs text-text-tertiary truncate">admin@bawarchi.app</p>
+                        <p className="text-sm font-medium text-text-primary leading-tight truncate">{user?.name || 'Admin User'}</p>
+                        <p className="text-xs text-text-tertiary truncate">{user?.email || 'admin@bawarchi.app'}</p>
                     </div>
                 </div>
+                <button
+                    onClick={logout}
+                    className="p-2 text-text-tertiary hover:text-text-primary transition-colors"
+                    title="Logout"
+                >
+                    <Icons.LogOut size={18} />
+                </button>
             </div>
         </aside>
     );
