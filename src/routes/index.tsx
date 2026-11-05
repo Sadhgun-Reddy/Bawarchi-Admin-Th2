@@ -15,14 +15,15 @@ import { CatererReviewPage } from '../pages/caterers/CatererReviewPage';
 import { CatererComplaintsPage } from '../pages/caterers/CatererComplaintsPage';
 import { MenuModerationPage } from '../pages/menus/MenuModerationPage';
 import { OffersModerationPage } from '../pages/offers/OffersModerationPage';
-import BlogModerationPage from '../pages/blog/BlogModerationPage';
-import BlogReviewPage from '../pages/blog/BlogReviewPage';
+import { BlogModerationPage } from '../pages/blog/BlogModerationPage';
+import { BlogReviewPage } from '../pages/blog/BlogReviewPage';
 import { EnquiriesPage } from '../pages/enquiries/EnquiriesPage';
 import { SupportTicketsPage } from '../pages/support/SupportTicketsPage';
 import { TicketDetailPage } from '../pages/support/TicketDetailPage';
 import { FoodRescuePage } from '../pages/food-rescue/FoodRescuePage';
 import { DonationReviewPage } from '../pages/food-rescue/DonationReviewPage';
-import { SettingsPage } from '../pages/settings/SettingsPage';
+import { PlatformSettingsPage } from '../pages/settings/PlatformSettingsPage';
+import { RolesPermissionsPage } from '../pages/settings/RolesPermissionsPage';
 
 export function AppRoutes() {
     return (
@@ -58,10 +59,10 @@ export function AppRoutes() {
                     <Route path="rescue" element={<FoodRescuePage />} />
                     <Route path="rescue/review/:id" element={<DonationReviewPage />} />
 
-                    <Route path="settings" element={<SettingsPage />} />
+                <Route path="settings/general" element={<PlatformSettingsPage />} />
+                <Route path="settings/roles" element={<RolesPermissionsPage />} />
 
-                    <Route path="showcase" element={<ThemeShowcase />} />
-                </Route>
+                <Route path="showcase" element={<ThemeShowcase />} />
             </Route>
 
             {/* Catch-All to keep the app flow robust */}

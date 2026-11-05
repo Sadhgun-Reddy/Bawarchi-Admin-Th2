@@ -63,9 +63,9 @@ export const navigationConfig: NavGroup[] = [
         ]
     },
     {
-        title: "System",
+        title: "Configuration",
         items: [
-            { label: "Settings", icon: "Settings", path: "/admin/settings" },
+            { label: "Settings", icon: "Settings", path: "/admin/settings/general" },
         ]
     }
 ];
