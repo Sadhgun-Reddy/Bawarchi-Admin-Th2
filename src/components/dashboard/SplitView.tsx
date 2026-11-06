@@ -12,7 +12,12 @@ export function SplitView({ children }: { children: React.ReactNode }) {
     );
 }
 
-export function ActionList({ items }: { items: ActionItem[] }) {
+interface ActionListProps {
+    items: ActionItem[];
+    onReview?: (id: string) => void;
+}
+
+export function ActionList({ items, onReview }: ActionListProps) {
     const { theme } = useTheme();
     const strokeWidth = theme === 'slate-dark' ? 1.5 : 2;
 
@@ -37,31 +42,40 @@ export function ActionList({ items }: { items: ActionItem[] }) {
 
             <h3 className="text-base font-bold text-text-primary mb-4 relative z-10">Action Required</h3>
             <div className="flex flex-col relative z-10 divide-y divide-border">
-                {items.map((item) => {
-                    const styles = getTypeStyles(item.type);
-                    const Icon = (Icons as any)[styles.icon];
+                {items.length === 0 ? (
+                    <div className="py-8 text-center text-sm text-text-tertiary">
+                        No pending actions required. You're all caught up!
+                    </div>
+                ) : (
+                    items.map((item) => {
+                        const styles = getTypeStyles(item.type);
+                        const Icon = (Icons as any)[styles.icon];
 
-                    return (
-                        <div key={item.id} className="flex items-center justify-between py-3 group">
-                            <div className="flex items-center gap-3">
-                                <div className={cn("w-10 h-10 rounded-full flex flex-shrink-0 items-center justify-center transition-transform group-hover:scale-110", styles.bg, styles.color)}>
-                                    <Icon strokeWidth={strokeWidth} className="w-5 h-5" />
+                        return (
+                            <div key={item.id} className="flex items-center justify-between py-3 group">
+                                <div className="flex items-center gap-3">
+                                    <div className={cn("w-10 h-10 rounded-full flex flex-shrink-0 items-center justify-center transition-transform group-hover:scale-110", styles.bg, styles.color)}>
+                                        <Icon strokeWidth={strokeWidth} className="w-5 h-5" />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-sm font-medium text-text-primary line-clamp-1">{item.title}</h4>
+                                        <p className="text-xs text-text-secondary line-clamp-1">{item.subtitle}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 className="text-sm font-medium text-text-primary line-clamp-1">{item.title}</h4>
-                                    <p className="text-xs text-text-secondary line-clamp-1">{item.subtitle}</p>
-                                </div>
+                                <button
+                                    onClick={() => onReview && onReview(item.id)}
+                                    className={cn(
+                                        "ml-4 shrink-0 px-3 py-1.5 text-xs font-medium rounded border transition-colors",
+                                        "bg-surface text-text-secondary border-border hover:bg-surface-secondary hover:text-text-primary",
+                                        "dark:bg-[#0F172A] dark:hover:bg-slate-800"
+                                    )}
+                                >
+                                    Review
+                                </button>
                             </div>
-                            <button className={cn(
-                                "ml-4 shrink-0 px-3 py-1.5 text-xs font-medium rounded border transition-colors",
-                                "bg-surface text-text-secondary border-border hover:bg-surface-secondary hover:text-text-primary",
-                                "dark:bg-[#0F172A] dark:hover:bg-slate-800"
-                            )}>
-                                Review
-                            </button>
-                        </div>
-                    );
-                })}
+                        );
+                    })
+                )}
             </div>
         </div>
     );
