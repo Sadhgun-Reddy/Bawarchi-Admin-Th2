@@ -19,8 +19,9 @@ export function TopBar() {
                     </div>
                     <input
                         type="text"
-                        className="input-base w-full pl-9 pr-12 h-9 text-sm"
+                        className="input-base w-full pl-9 pr-12 h-9 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         placeholder="Search..."
+                        aria-label="Search"
                     />
                     <div className="absolute inset-y-0 right-0 pr-2 flex items-center pointer-events-none">
                         <span className="badge-base bg-badge-neutral text-badge-neutral-foreground text-[10px] tracking-wider font-semibold px-1.5 py-0.5 rounded">
@@ -42,8 +43,9 @@ export function TopBar() {
                     </div>
                     <button
                         onClick={logout}
-                        className="p-1.5 ml-2 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary rounded transition-colors"
+                        className="p-1.5 ml-2 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         title="Logout"
+                        aria-label="Logout"
                     >
                         <LogOut size={16} />
                     </button>

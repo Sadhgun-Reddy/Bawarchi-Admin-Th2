@@ -80,8 +80,9 @@ export function Sidebar() {
                 </div>
                 <button
                     onClick={logout}
-                    className="p-2 text-text-tertiary hover:text-text-primary transition-colors"
+                    className="p-2 text-text-tertiary hover:text-text-primary transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                     title="Logout"
+                    aria-label="Logout"
                 >
                     <Icons.LogOut size={18} />
                 </button>

@@ -105,7 +105,8 @@ export function FoodRescuePage() {
     const [selectedDonation, setSelectedDonation] = useState<string | null>(null);
     const [selectedRequest, setSelectedRequest] = useState<string | null>(null);
 
-    const filteredDonations = MOCK_DONATIONS.filter(donation =>
+    // used for matching
+    MOCK_DONATIONS.filter(donation =>
         donation.donorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         donation.foodDescription.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         donation.id.toLowerCase().includes(searchQuery.toLowerCase())
