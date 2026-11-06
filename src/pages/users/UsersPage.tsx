@@ -7,6 +7,13 @@ import { mockUsers } from '../../components/users/mockData';
 
 export function UsersPage() {
     const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+
+    const paginatedUsers = mockUsers.slice(
+        (currentPage - 1) * rowsPerPage,
+        currentPage * rowsPerPage
+    );
 
     const handleSelectUser = (id: string) => {
         setSelectedUserIds((prev) =>
@@ -27,12 +34,21 @@ export function UsersPage() {
             <UsersHeader />
             <UsersToolbar />
             <UsersTable
-                users={mockUsers}
+                users={paginatedUsers}
                 selectedUserIds={selectedUserIds}
                 onSelectUser={handleSelectUser}
                 onSelectAll={handleSelectAll}
             />
-            <TablePagination totalRows={97} />
+            <TablePagination
+                totalRows={mockUsers.length}
+                currentPage={currentPage}
+                rowsPerPage={rowsPerPage}
+                onPageChange={setCurrentPage}
+                onRowsPerPageChange={(rows) => {
+                    setRowsPerPage(rows);
+                    setCurrentPage(1); // Reset to first page when changing page size
+                }}
+            />
         </div>
     );
 }

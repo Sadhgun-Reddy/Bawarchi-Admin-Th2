@@ -67,15 +67,15 @@ export function Sidebar() {
                 ))}
             </nav>
 
-            {/* User Profile Stub (Bottom of Sidebar - prominently in Light mode) */}
+            {/* User Profile (Bottom of Sidebar - prominently in Light mode) */}
             <div className={`p-4 border-t border-border shrink-0 flex items-center justify-between ${theme === 'slate-dark' ? 'md:hidden' : 'block'}`}>
                 <div className="flex items-center gap-3 hover:bg-surface-secondary p-2 rounded-md transition-colors cursor-pointer flex-1 overflow-hidden">
                     <div className="w-8 h-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-medium text-sm">
-                        {user?.name?.[0] || 'A'}
+                        {user?.name?.[0] || 'U'}
                     </div>
                     <div className="flex-1 overflow-hidden">
-                        <p className="text-sm font-medium text-text-primary leading-tight truncate">{user?.name || 'Admin User'}</p>
-                        <p className="text-xs text-text-tertiary truncate">{user?.email || 'admin@bawarchi.app'}</p>
+                        <p className="text-sm font-medium text-text-primary leading-tight truncate">{user?.name || 'User'}</p>
+                        <p className="text-xs text-text-tertiary truncate">{user?.email || 'user@example.com'}</p>
                     </div>
                 </div>
                 <button

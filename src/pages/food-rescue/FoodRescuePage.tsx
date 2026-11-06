@@ -178,7 +178,7 @@ export function FoodRescuePage() {
                                 />
                             </div>
                         </div>
-                        <DonationsTable donations={MOCK_DONATIONS} />
+                        <DonationsTable donations={filteredDonations} />
                     </div>
                 </div>
             ) : (

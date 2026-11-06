@@ -63,6 +63,7 @@ export function AppRoutes() {
                 <Route path="settings/roles" element={<RolesPermissionsPage />} />
 
                 <Route path="showcase" element={<ThemeShowcase />} />
+                </Route>
             </Route>
 
             {/* Catch-All to keep the app flow robust */}
