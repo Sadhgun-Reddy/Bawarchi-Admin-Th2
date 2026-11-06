@@ -103,8 +103,9 @@ export function TopBar() {
                     </div>
                     <button
                         onClick={logout}
-                        className="p-1.5 ml-2 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary rounded transition-colors"
+                        className="p-1.5 ml-2 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         title="Logout"
+                        aria-label="Logout"
                     >
                         <LogOut size={16} />
                     </button>
