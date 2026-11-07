@@ -48,7 +48,8 @@ export function LoginPage() {
                 await login(formData.email);
                 navigate('/admin/dashboard', { replace: true });
             } catch (err) {
-                console.error(err);
+                // 🛡️ Sentinel: Avoid logging full error objects which might leak stack traces or internal details.
+                console.error('Login failed during authentication attempt');
                 setErrors({ email: 'Login failed. Try again.' });
             } finally {
                 setIsSubmitting(false);
