@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ApprovalsTableProps } from '../../../types/catererApprovals.types';
 import { TableFooter } from './TableFooter';
+import { useCatererApprovals } from '../../../contexts/CatererApprovalsContext';
+import { Check, X } from 'lucide-react';
 
 export const ApprovalsTable: React.FC<ApprovalsTableProps> = ({ applications }) => {
+    const { updateApplicationStatus } = useCatererApprovals();
     // Key state is used to trigger re-animation when data changes
     const [animationKey, setAnimationKey] = useState(0);
 
@@ -88,11 +91,26 @@ export const ApprovalsTable: React.FC<ApprovalsTableProps> = ({ applications }) 
                                         {app.submittedDate}
                                     </td>
                                     <td className="px-6 py-4 text-right">
-                                        <button className="px-3 py-1.5 rounded-md text-xs font-medium 
-                      bg-accent/10 text-accent hover:bg-accent/20 
-                      dark:shadow-sm dark:shadow-accent/20 transition-all">
-                                            Review
-                                        </button>
+
+        {app.status === 'pending' ? (
+            <div className="flex justify-end gap-2">
+                <button
+                    onClick={() => updateApplicationStatus(app.id, 'active')}
+                    className="p-1.5 rounded-md text-success hover:bg-success/10 transition-colors" title="Approve">
+                    <Check className="w-4 h-4" />
+                </button>
+                <button
+                    onClick={() => updateApplicationStatus(app.id, 'rejected')}
+                    className="p-1.5 rounded-md text-destructive hover:bg-destructive/10 transition-colors" title="Reject">
+                    <X className="w-4 h-4" />
+                </button>
+            </div>
+        ) : (
+            <span className={`text-xs font-medium ${app.status === 'active' ? 'text-success' : 'text-destructive'}`}>
+                {app.status === 'active' ? 'Approved' : 'Rejected'}
+            </span>
+        )}
+
                                     </td>
                                 </tr>
                             ))
