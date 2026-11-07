@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Download, Search, Filter, ArrowRight, CheckCircle2, MapPin, Heart, Check } from 'lucide-react';
 import { DonationsTable } from '../../components/food-rescue/DonationsTable';
 import { MatchingBoardDonationCards } from '../../components/food-rescue/MatchingBoardDonationCards';
@@ -14,11 +14,17 @@ export function FoodRescuePage() {
     const [selectedRequest, setSelectedRequest] = useState<string | null>(null);
 
     // used for matching
-    const filteredDonations = MOCK_DONATIONS.filter(donation =>
-        donation.donorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        donation.foodDescription.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        donation.id.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredDonations = useMemo(() => {
+        // Optimize: compute lowercase query once instead of 3x per item in loop
+        const query = searchQuery.toLowerCase();
+        if (!query) return donations;
+
+        return donations.filter(donation =>
+            donation.donorName.toLowerCase().includes(query) ||
+            donation.foodDescription.title.toLowerCase().includes(query) ||
+            donation.id.toLowerCase().includes(query)
+        );
+    }, [donations, searchQuery]);
 
     return (
         <div className={`flex-1 overflow-y-auto no-scrollbar ${activeTab === 'matching' ? 'p-0 flex flex-col h-full bg-surface-secondary/50 relative' : 'p-4 md:p-8 lg:px-12 lg:py-10'}`}>
