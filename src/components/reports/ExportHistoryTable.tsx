@@ -84,21 +84,21 @@ export function ExportHistoryTable({ records }: { records: ExportRecord[] }) {
 
                                 {/* Hover Actions */}
                                 <td className="px-6 py-4 align-middle text-right">
-                                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-normal">
+                                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-normal">
                                         {record.status === 'completed' && (
-                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors" title="Download">
+                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Download" aria-label="Download">
                                                 <Download className="w-4 h-4" />
                                             </button>
                                         )}
                                         {(record.status === 'failed' || record.status === 'processing') && (
-                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors" title="Retry">
+                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Retry" aria-label="Retry">
                                                 <RotateCcw className="w-4 h-4" />
                                             </button>
                                         )}
-                                        <button className="p-1.5 text-text-tertiary hover:text-destructive hover:bg-destructive-muted/30 rounded transition-colors" title="Delete">
+                                        <button className="p-1.5 text-text-tertiary hover:text-destructive hover:bg-destructive-muted/30 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Delete" aria-label="Delete">
                                             <Trash2 className="w-4 h-4" />
                                         </button>
-                                        <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors block md:hidden" title="More">
+                                        <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors block md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="More" aria-label="More">
                                             <MoreVertical className="w-4 h-4" />
                                         </button>
                                     </div>

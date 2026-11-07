@@ -145,10 +145,10 @@ export function UsersTable({ users, selectedUserIds, onSelectUser, onSelectAll }
 
                                     {/* Hover Actions */}
                                     <td className="px-6 py-4 align-middle text-right">
-                                        <div className="flex items-center justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-normal gap-1">
+                                        <div className="flex items-center justify-end opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-normal gap-1">
                                             <button
                                                 onClick={() => navigate(`/admin/users/${user.id}`)}
-                                                className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500 rounded transition-all"
+                                                className="flex items-center gap-1 px-2 py-1.5 text-xs font-semibold text-blue-600 hover:text-white hover:bg-blue-600 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-500 rounded transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                                                 title="View Details"
                                             >
                                                 <Eye strokeWidth={1.5} className="w-4 h-4" />
@@ -156,12 +156,13 @@ export function UsersTable({ users, selectedUserIds, onSelectUser, onSelectAll }
                                             </button>
                                             <button
                                                 onClick={() => navigate(`/admin/users/${user.id}`)}
-                                                className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors"
+                                                className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                                                 title="Edit User"
+                                                aria-label="Edit User"
                                             >
                                                 <Edit2 strokeWidth={1.5} className="w-4 h-4" />
                                             </button>
-                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors" title="More options">
+                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="More options" aria-label="More options">
                                                 <MoreVertical strokeWidth={1.5} className="w-4 h-4" />
                                             </button>
                                         </div>
