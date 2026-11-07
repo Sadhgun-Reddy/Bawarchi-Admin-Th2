@@ -2,102 +2,10 @@ import { useState } from "react";
 import { Download, Search, Filter, ArrowRight, CheckCircle2, MapPin, Heart, Check } from 'lucide-react';
 import { DonationsTable } from '../../components/food-rescue/DonationsTable';
 import { MatchingBoardDonationCards } from '../../components/food-rescue/MatchingBoardDonationCards';
-import { Donation } from '../../types/food-rescue.types';
-
-const MOCK_DONATIONS: Donation[] = [
-    {
-        id: 'DON-701',
-        donorName: 'Grand Plaza Hotel',
-        foodDescription: {
-            title: 'Vegetable Biryani & Curries',
-            details: 'Contains Dairy, Nuts'
-        },
-        quantity: '15 kg',
-        pickupLocation: 'Sector 45, Loading Bay',
-        expiryTime: {
-            value: 'Today, 23:00',
-            urgency: 'high'
-        },
-        status: 'pending'
-    },
-    {
-        id: 'DON-702',
-        donorName: 'Spice Garden Catering',
-        foodDescription: {
-            title: 'Assorted Naan & Paneer',
-            details: 'Contains Gluten, Dairy'
-        },
-        quantity: '8 kg',
-        pickupLocation: 'Main Kitchen, Rear Entry',
-        expiryTime: {
-            value: 'Tomorrow, 10:00',
-            urgency: 'medium'
-        },
-        status: 'pending'
-    },
-    {
-        id: 'DON-703',
-        donorName: 'Urban Corporate Kitchen',
-        foodDescription: {
-            title: 'Mixed Salad Bowls',
-            details: 'Vegan, Gluten Free'
-        },
-        quantity: '12 kg',
-        pickupLocation: 'Building C, Cafeteria',
-        expiryTime: {
-            value: 'Tomorrow, 14:00',
-            urgency: 'medium'
-        },
-        status: 'pending'
-    },
-    {
-        id: 'DON-704',
-        donorName: 'Bakery Delights',
-        foodDescription: {
-            title: 'Sourdough Loaves & Bagels',
-            details: 'Contains Gluten'
-        },
-        quantity: '5 kg',
-        pickupLocation: 'Storefront, Side Door',
-        expiryTime: {
-            value: 'Oct 28, 09:00',
-            urgency: 'low'
-        },
-        status: 'pending'
-    },
-    {
-        id: 'DON-705',
-        donorName: 'Events Inc.',
-        foodDescription: {
-            title: 'Grilled Chicken & Vegetables',
-            details: 'High Protein'
-        },
-        quantity: '20 kg',
-        pickupLocation: 'Convention Center, Hall A',
-        expiryTime: {
-            value: 'Today, 21:00',
-            urgency: 'high'
-        },
-        status: 'pending'
-    },
-    {
-        id: 'DON-706',
-        donorName: 'Sushi Spot',
-        foodDescription: {
-            title: 'California Rolls & Miso',
-            details: 'Seafood, Soy'
-        },
-        quantity: '4 kg',
-        pickupLocation: 'Downtown Branch, Kitchen',
-        expiryTime: {
-            value: 'Today, 20:30',
-            urgency: 'high'
-        },
-        status: 'pending'
-    }
-];
+import { useFoodRescue } from '../../contexts/FoodRescueContext';
 
 export function FoodRescuePage() {
+    const { donations, updateDonationStatus } = useFoodRescue();
     const [searchQuery, setSearchQuery] = useState('');
     const [activeTab, setActiveTab] = useState<'pending' | 'matching'>('pending');
 
@@ -106,7 +14,7 @@ export function FoodRescuePage() {
     const [selectedRequest, setSelectedRequest] = useState<string | null>(null);
 
     // used for matching
-    MOCK_DONATIONS.filter(donation =>
+    const filteredDonations = donations.filter(donation => donation.status === 'pending').filter(donation =>
         donation.donorName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         donation.foodDescription.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         donation.id.toLowerCase().includes(searchQuery.toLowerCase())
@@ -221,7 +129,7 @@ export function FoodRescuePage() {
                                     </button>
                                 </div>
                                 <MatchingBoardDonationCards
-                                    donations={MOCK_DONATIONS}
+                                    donations={donations}
                                     selectedDonation={selectedDonation}
                                     setSelectedDonation={setSelectedDonation}
                                 />
@@ -354,10 +262,21 @@ export function FoodRescuePage() {
                                     >
                                         Cancel
                                     </button>
-                                    <button className="bg-success hover:bg-success-foreground text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-success/20 flex items-center gap-2 transition-all active:scale-95">
-                                        <CheckCircle2 className="w-5 h-5" />
-                                        Confirm Match
-                                    </button>
+
+        <button
+            onClick={() => {
+                if (selectedDonation) {
+                    updateDonationStatus(selectedDonation, 'matched');
+                    setSelectedDonation(null);
+                    setSelectedRequest(null);
+                    setActiveTab('pending');
+                }
+            }}
+            className="bg-success hover:bg-success-foreground text-white text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg shadow-success/20 flex items-center gap-2 transition-all active:scale-95">
+            <CheckCircle2 className="w-5 h-5" />
+            Confirm Match
+        </button>
+
                                 </div>
                             </div>
                         </div>

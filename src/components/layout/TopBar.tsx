@@ -129,7 +129,7 @@ export function TopBar() {
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     onKeyDown={handleSearchKeyDown}
                                 />
-                                <button onClick={() => setIsSearchOpen(false)} className="text-xs border border-border rounded px-2 py-1 text-text-tertiary hover:bg-surface-secondary">
+                                <button onClick={() => setIsSearchOpen(false)} className="text-xs border border-border rounded px-2 py-1 text-text-tertiary hover:bg-surface-secondary" aria-label="Close search">
                                     ESC
                                 </button>
                             </div>

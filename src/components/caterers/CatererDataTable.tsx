@@ -128,13 +128,13 @@ export function CatererDataTable({ caterers, isLoading }: CatererTableProps) {
                                 {/* Actions */}
                                 <td className="px-6 py-4 align-middle text-right">
                                     <div className="flex items-center justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-normal gap-1">
-                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded transition-colors" title="View Details">
+                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-500/10 rounded transition-colors" title="View Details" aria-label="View Details">
                                             <Eye strokeWidth={1.5} className="w-4 h-4" />
                                         </button>
-                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors" title="Edit">
+                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors" title="Edit" aria-label="Edit">
                                             <Edit2 strokeWidth={1.5} className="w-4 h-4" />
                                         </button>
-                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors" title="More options">
+                                        <button className="flex items-center justify-center p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700/50 rounded transition-colors" title="More options" aria-label="More options">
                                             <MoreVertical strokeWidth={1.5} className="w-4 h-4" />
                                         </button>
                                     </div>
