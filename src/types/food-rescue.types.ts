@@ -11,5 +11,5 @@ export interface Donation {
         value: string;
         urgency: 'high' | 'medium' | 'low';
     };
-    status: 'pending' | 'approved' | 'rejected' | 'history';
+    status: 'pending' | 'approved' | 'rejected' | 'history' | 'matched';
 }

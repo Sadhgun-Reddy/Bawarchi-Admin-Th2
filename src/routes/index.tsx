@@ -23,7 +23,9 @@ import { TicketDetailPage } from '../pages/support/TicketDetailPage';
 import { FoodRescuePage } from '../pages/food-rescue/FoodRescuePage';
 import { DonationReviewPage } from '../pages/food-rescue/DonationReviewPage';
 import { PlatformSettingsPage } from '../pages/settings/PlatformSettingsPage';
+import { SettingsPage } from '../pages/settings/SettingsPage';
 import { RolesPermissionsPage } from '../pages/settings/RolesPermissionsPage';
+import { NotFoundPage } from '../pages/NotFoundPage';
 
 export function AppRoutes() {
     return (
@@ -59,6 +61,7 @@ export function AppRoutes() {
                     <Route path="rescue" element={<FoodRescuePage />} />
                     <Route path="rescue/review/:id" element={<DonationReviewPage />} />
 
+                <Route path="settings" element={<SettingsPage />} />
                 <Route path="settings/general" element={<PlatformSettingsPage />} />
                 <Route path="settings/roles" element={<RolesPermissionsPage />} />
 
@@ -67,7 +70,7 @@ export function AppRoutes() {
             </Route>
 
             {/* Catch-All to keep the app flow robust */}
-            <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
     );
 }

@@ -2,6 +2,9 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
+import { CatererProvider } from './contexts/CatererContext';
+import { CatererApprovalsProvider } from './contexts/CatererApprovalsContext';
+import { FoodRescueProvider } from './contexts/FoodRescueContext';
 import { AppRoutes } from './routes';
 
 function FloatingThemeTools() {
@@ -35,7 +38,13 @@ function App() {
     return (
         <ThemeProvider>
             <AuthProvider>
+                <CatererProvider>
+                <CatererApprovalsProvider>
+                <FoodRescueProvider>
                 <AppContent />
+                                                            </FoodRescueProvider>
+                </CatererApprovalsProvider>
+                </CatererProvider>
             </AuthProvider>
         </ThemeProvider>
     );

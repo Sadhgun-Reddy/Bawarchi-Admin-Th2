@@ -1,3 +1,3 @@
-## 2026-11-07 - Accessible Hover Actions in Data Tables
-**Learning:** Table row action buttons hidden with `opacity-0 group-hover:opacity-100` are invisible to sighted keyboard users when tabbing, and icon-only buttons lack context for screen readers.
-**Action:** Always add `focus-within:opacity-100` to the hover wrapper, apply `focus-visible` styles, and add descriptive `aria-label` attributes to icon-only buttons.
+## 2026-03-05 - Global Accessibility Polish
+**Learning:** Icon-only buttons (like in `TopBar`, `Sidebar`, and `CatererDataTable`) must include `aria-label` attributes to ensure screen readers can understand the button's action. This is particularly important for non-text action triggers (e.g. eye icon for "View Details").
+**Action:** Added explicit `aria-label` properties (e.g., `aria-label="Logout"`, `aria-label="View Details"`) to all icon-only control buttons across core layout components.
