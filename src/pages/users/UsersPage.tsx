@@ -3,14 +3,15 @@ import { UsersHeader } from '../../components/users/UsersHeader';
 import { UsersToolbar } from '../../components/users/UsersToolbar';
 import { UsersTable } from '../../components/users/UsersTable';
 import { TablePagination } from '../../components/users/TablePagination';
-import { mockUsers } from '../../components/users/mockData';
+import { useUsersContext } from '../../contexts/UsersContext';
 
 export function UsersPage() {
+    const { users } = useUsersContext();
     const [selectedUserIds, setSelectedUserIds] = useState<string[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
-    const paginatedUsers = mockUsers.slice(
+    const paginatedUsers = users.slice(
         (currentPage - 1) * rowsPerPage,
         currentPage * rowsPerPage
     );
@@ -22,10 +23,10 @@ export function UsersPage() {
     };
 
     const handleSelectAll = () => {
-        if (selectedUserIds.length === mockUsers.length) {
+        if (selectedUserIds.length === users.length) {
             setSelectedUserIds([]); // Deselect all
         } else {
-            setSelectedUserIds(mockUsers.map(u => u.id)); // Select all
+            setSelectedUserIds(users.map(u => u.id)); // Select all
         }
     };
 
@@ -40,7 +41,7 @@ export function UsersPage() {
                 onSelectAll={handleSelectAll}
             />
             <TablePagination
-                totalRows={mockUsers.length}
+                totalRows={users.length}
                 currentPage={currentPage}
                 rowsPerPage={rowsPerPage}
                 onPageChange={setCurrentPage}

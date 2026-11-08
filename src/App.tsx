@@ -1,10 +1,15 @@
-
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
 import { CatererProvider } from './contexts/CatererContext';
 import { CatererApprovalsProvider } from './contexts/CatererApprovalsContext';
 import { FoodRescueProvider } from './contexts/FoodRescueContext';
+import { DashboardProvider } from './contexts/DashboardContext';
+import { ReportsProvider } from './contexts/ReportsContext';
+import { BlogProvider } from './contexts/BlogContext';
+import { AuditProvider } from './contexts/AuditContext';
+import { UsersProvider } from './contexts/UsersContext';
+import { MenuModerationProvider } from './contexts/MenuModerationContext';
 import { AppRoutes } from './routes';
 
 function FloatingThemeTools() {
@@ -39,11 +44,23 @@ function App() {
         <ThemeProvider>
             <AuthProvider>
                 <CatererProvider>
-                <CatererApprovalsProvider>
-                <FoodRescueProvider>
-                <AppContent />
-                                                            </FoodRescueProvider>
-                </CatererApprovalsProvider>
+                    <CatererApprovalsProvider>
+                        <FoodRescueProvider>
+                            <DashboardProvider>
+                                <ReportsProvider>
+                                    <BlogProvider>
+                                        <AuditProvider>
+                                            <UsersProvider>
+                                                <MenuModerationProvider>
+                                                    <AppContent />
+                                                </MenuModerationProvider>
+                                            </UsersProvider>
+                                        </AuditProvider>
+                                    </BlogProvider>
+                                </ReportsProvider>
+                            </DashboardProvider>
+                        </FoodRescueProvider>
+                    </CatererApprovalsProvider>
                 </CatererProvider>
             </AuthProvider>
         </ThemeProvider>

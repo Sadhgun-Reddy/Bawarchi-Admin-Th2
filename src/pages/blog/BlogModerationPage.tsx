@@ -1,11 +1,13 @@
 import ModerationLayout from '../../components/blog/moderation/ModerationLayout';
-import { mockBlogPosts, mockModerationStats } from '../../components/blog/moderation/mockData';
+import { useBlogContext } from '../../contexts/BlogContext';
 
 export function BlogModerationPage() {
+  const { posts, stats } = useBlogContext();
+
   return (
     <ModerationLayout
-      posts={mockBlogPosts}
-      stats={mockModerationStats}
+      posts={posts}
+      stats={stats}
       loading={false}
     />
   );

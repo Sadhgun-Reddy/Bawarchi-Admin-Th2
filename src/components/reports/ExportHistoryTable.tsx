@@ -1,12 +1,13 @@
-
 import {
     FileJson, TableProperties, FileText, MoreVertical,
     Download, Trash2, RotateCcw
 } from 'lucide-react';
 import { ExportRecord } from '../../types/reports';
 import { cn } from '../../lib/utils';
+import { useReportsContext } from '../../contexts/ReportsContext';
 
 export function ExportHistoryTable({ records }: { records: ExportRecord[] }) {
+    const { deleteExport, retryExport } = useReportsContext();
 
     const getFileIcon = (type: string) => {
         switch (type) {
@@ -91,11 +92,11 @@ export function ExportHistoryTable({ records }: { records: ExportRecord[] }) {
                                             </button>
                                         )}
                                         {(record.status === 'failed' || record.status === 'processing') && (
-                                            <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Retry" aria-label="Retry">
+                                            <button onClick={() => retryExport(record.id)} className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Retry" aria-label="Retry">
                                                 <RotateCcw className="w-4 h-4" />
                                             </button>
                                         )}
-                                        <button className="p-1.5 text-text-tertiary hover:text-destructive hover:bg-destructive-muted/30 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Delete" aria-label="Delete">
+                                        <button onClick={() => deleteExport(record.id)} className="p-1.5 text-text-tertiary hover:text-destructive hover:bg-destructive-muted/30 rounded transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="Delete" aria-label="Delete">
                                             <Trash2 className="w-4 h-4" />
                                         </button>
                                         <button className="p-1.5 text-text-tertiary hover:text-text-primary hover:bg-surface-secondary dark:hover:bg-slate-700 rounded transition-colors block md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent" title="More" aria-label="More">
