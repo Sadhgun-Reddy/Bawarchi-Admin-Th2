@@ -2,7 +2,7 @@
 import { Search, LogOut } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useAuth } from '../../contexts/AuthContext';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { navigationConfig } from '../../config/navigation';
 import { useNavigate } from 'react-router-dom';
 import * as Icons from 'lucide-react';
@@ -17,10 +17,15 @@ export function TopBar() {
     const [selectedIndex, setSelectedIndex] = useState(0);
     const searchInputRef = useRef<HTMLInputElement>(null);
 
-    const allLinks = navigationConfig.flatMap(group => group.items);
-    const filteredLinks = allLinks.filter(item =>
-        item.label.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    // ⚡ Bolt: Memoize the flattened links array to prevent re-calculating on every render
+    const allLinks = useMemo(() => navigationConfig.flatMap(group => group.items), []);
+
+    // ⚡ Bolt: Memoize filtered links and hoist toLowerCase() outside the loop
+    // to avoid re-computing it on every item during filtering
+    const filteredLinks = useMemo(() => {
+        const query = searchQuery.toLowerCase();
+        return allLinks.filter(item => item.label.toLowerCase().includes(query));
+    }, [allLinks, searchQuery]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
