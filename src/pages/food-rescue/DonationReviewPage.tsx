@@ -27,10 +27,18 @@ export function DonationReviewPage() {
                             Pending Review
                         </span>
                         <div className="hidden sm:flex items-center gap-2">
-                            <button className="p-2 text-text-tertiary hover:text-text-primary rounded-lg border border-transparent hover:bg-surface-secondary hover:border-border transition-all">
+                            <button
+                                className="p-2 text-text-tertiary hover:text-text-primary rounded-lg border border-transparent hover:bg-surface-secondary hover:border-border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                                aria-label="Print request"
+                                title="Print request"
+                            >
                                 <Printer className="w-5 h-5" />
                             </button>
-                            <button className="p-2 text-text-tertiary hover:text-text-primary rounded-lg border border-transparent hover:bg-surface-secondary hover:border-border transition-all">
+                            <button
+                                className="p-2 text-text-tertiary hover:text-text-primary rounded-lg border border-transparent hover:bg-surface-secondary hover:border-border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                                aria-label="Share request"
+                                title="Share request"
+                            >
                                 <Share className="w-5 h-5" />
                             </button>
                         </div>
