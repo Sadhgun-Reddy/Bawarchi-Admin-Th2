@@ -96,13 +96,15 @@ export const ApprovalsTable: React.FC<ApprovalsTableProps> = ({ applications }) 
             <div className="flex justify-end gap-2">
                 <button
                     onClick={() => updateApplicationStatus(app.id, 'active')}
-                    className="p-1.5 rounded-md text-success hover:bg-success/10 transition-colors" title="Approve">
-                    <Check className="w-4 h-4" />
+                    aria-label={`Approve ${app.businessName}`}
+                    className="p-1.5 rounded-md text-success hover:bg-success/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-success" title="Approve">
+                    <Check className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <button
                     onClick={() => updateApplicationStatus(app.id, 'rejected')}
-                    className="p-1.5 rounded-md text-destructive hover:bg-destructive/10 transition-colors" title="Reject">
-                    <X className="w-4 h-4" />
+                    aria-label={`Reject ${app.businessName}`}
+                    className="p-1.5 rounded-md text-destructive hover:bg-destructive/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-destructive" title="Reject">
+                    <X className="w-4 h-4" aria-hidden="true" />
                 </button>
             </div>
         ) : (

@@ -15,11 +15,11 @@ export const TableFooter: React.FC<TableFooterProps> = ({ start, end, total }) =
             </div>
 
             <div className="flex space-x-2">
-                <button className="p-2 rounded-md border border-border text-text-secondary hover:bg-surface-secondary transition-colors disabled:opacity-50" disabled>
-                    <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
+                <button aria-label="Previous page" className="p-2 rounded-md border border-border text-text-secondary hover:bg-surface-secondary transition-colors disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" disabled>
+                    <ChevronLeft className="w-4 h-4" strokeWidth={1.5} aria-hidden="true" />
                 </button>
-                <button className="p-2 rounded-md border border-border text-text-secondary hover:bg-surface-secondary transition-colors disabled:opacity-50">
-                    <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
+                <button aria-label="Next page" className="p-2 rounded-md border border-border text-text-secondary hover:bg-surface-secondary transition-colors disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                    <ChevronRight className="w-4 h-4" strokeWidth={1.5} aria-hidden="true" />
                 </button>
             </div>
         </div>
