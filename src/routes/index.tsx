@@ -30,6 +30,7 @@ import { NotFoundPage } from '../pages/NotFoundPage';
 export function AppRoutes() {
     return (
         <Routes>
+            <Route path="/" element={<Navigate to="/login" replace />} />
             {/* Public Routes */}
             <Route path="/login" element={<LoginPage />} />
 
