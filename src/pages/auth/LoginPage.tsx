@@ -81,12 +81,13 @@ export function LoginPage() {
 
                         {/* Email Field */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-text-secondary block">Email Address</label>
+                            <label htmlFor="email" className="text-sm font-medium text-text-secondary block">Email Address</label>
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-text-tertiary">
                                     <Mail className="h-5 w-5" />
                                 </div>
                                 <input
+                                    id="email"
                                     type="email"
                                     className={`input-base w-full pl-10 ${errors.email ? 'border-destructive focus:border-destructive shadow-[0_0_0_3px_rgba(239,68,68,0.15)]' : ''}`}
                                     placeholder="name@example.com"
@@ -101,7 +102,7 @@ export function LoginPage() {
                         {/* Password Field */}
                         <div className="space-y-2">
                             <div className="flex items-center justify-between">
-                                <label className="text-sm font-medium text-text-secondary block">Password</label>
+                                <label htmlFor="password" className="text-sm font-medium text-text-secondary block">Password</label>
                                 <a href="#" className="text-sm font-medium text-accent hover:text-accent-hover transition-colors">Forgot Password?</a>
                             </div>
                             <div className="relative">
@@ -109,6 +110,7 @@ export function LoginPage() {
                                     <Lock className="h-5 w-5" />
                                 </div>
                                 <input
+                                    id="password"
                                     type={showPassword ? 'text' : 'password'}
                                     className={`input-base w-full pl-10 pr-10 ${errors.password ? 'border-destructive focus:border-destructive shadow-[0_0_0_3px_rgba(239,68,68,0.15)]' : ''}`}
                                     placeholder="••••••••"
@@ -121,6 +123,8 @@ export function LoginPage() {
                                     className="absolute inset-y-0 right-0 pr-3 flex items-center text-text-tertiary hover:text-text-secondary focus:outline-none"
                                     onClick={() => setShowPassword(!showPassword)}
                                     disabled={isSubmitting}
+                                    aria-label={showPassword ? "Hide password" : "Show password"}
+                                    title={showPassword ? "Hide password" : "Show password"}
                                 >
                                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                                 </button>
